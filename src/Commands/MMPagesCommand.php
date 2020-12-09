@@ -1,12 +1,12 @@
 <?php
 
-namespace Spatie\Skeleton\Commands;
+namespace LambdaDigamma\MMPages\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class MMPagesCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'mm-pages';
 
     public $description = 'My command';
 

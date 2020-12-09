@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateMMPagesTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('mm_page_templates', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->json('name');
+            $table->timestamps();
+        });
+
+        Schema::create('mm_pages', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->json('title')->nullable();
+            $table->json('slug')->nullable();
+            $table->bigInteger('page_template_id')->unsigned()->nullable();
+            $table->foreign('creator_id')->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+            $table->integer('creator_id')->unsigned()->nullable();
+            $table->foreign('creator_id')->references('id')->on('users')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+            $table->json('extras')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
+
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('mm_page_templates');
+        Schema::dropIfExists('mm_pages');
+    }
+}
