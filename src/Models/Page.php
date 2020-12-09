@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use LambdaDigamma\MMPages\Models\PageTemplate;
 use LambdaDigamma\MMPages\Traits\HasPackageFactory;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
-use PageBlock;
 
 class Page extends Model
 {
@@ -16,6 +15,7 @@ class Page extends Model
     use SerializeTranslations;
 
     protected $table = "mm_pages";
+    protected $guarded = ['*', 'id'];
     public $translatable = ['title', 'slug'];
 
     public function blocks()

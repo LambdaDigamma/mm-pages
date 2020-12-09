@@ -13,6 +13,7 @@ class PageTemplate extends Model {
     use SerializeTranslations;
 
     protected $table = "mm_page_templates";
+    protected $guarded = ['*', 'id'];
     public $translatable = ['name'];
 
     public function pages() 

@@ -19,7 +19,7 @@ class CreateMMPagesTable extends Migration
             $table->json('title')->nullable();
             $table->json('slug')->nullable();
             $table->bigInteger('page_template_id')->unsigned()->nullable();
-            $table->foreign('creator_id')->references('id')->on('users')
+            $table->foreign('page_template_id')->references('id')->on('mm_page_templates')
                 ->onUpdate('cascade')
                 ->onDelete('set null');
             $table->integer('creator_id')->unsigned()->nullable();
@@ -31,6 +31,19 @@ class CreateMMPagesTable extends Migration
             $table->softDeletes();
         });
 
+        Schema::create('mm_page_blocks', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('page_id')->nullable();
+            $table->foreign('page_id')->references('id')->on('mm_pages')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+            $table->string('type');
+            $table->json('data')->nullable();
+            $table->unsignedInteger('order')->nullable();
+            $table->softDeletes();            
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -40,6 +53,7 @@ class CreateMMPagesTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('mm_page_blocks');
         Schema::dropIfExists('mm_page_templates');
         Schema::dropIfExists('mm_pages');
     }

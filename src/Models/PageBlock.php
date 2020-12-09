@@ -1,21 +1,20 @@
 <?php 
 
-use Eloquent;
-use Illuminate\Database\Eloquent\Collection;
+namespace LambdaDigamma\MMPages\Models;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Database\Query\Builder;
-use Illuminate\Support\Carbon;
+use LambdaDigamma\MMPages\Traits\HasPackageFactory;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
-use Spatie\Translatable\HasTranslations;
 
 class PageBlock extends Model
 {
+    use HasPackageFactory;
     use SoftDeletes;
     use SerializeTranslations;
 
-    protected $guarded = [];
-
+    protected $table = "mm_page_blocks";
+    protected $guarded = ['*', 'id'];
     protected $casts = [
         'data' => 'array'
     ];
