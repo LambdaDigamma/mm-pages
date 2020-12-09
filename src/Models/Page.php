@@ -4,7 +4,6 @@ namespace LambdaDigamma\MMPages\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use LambdaDigamma\MMPages\Models\PageTemplate;
 use LambdaDigamma\MMPages\Traits\HasPackageFactory;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
 use LaravelArchivable\Archivable;

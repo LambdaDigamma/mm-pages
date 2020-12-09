@@ -40,5 +40,4 @@ class PageTest extends TestCase
         $page->load('blocks');
         $this->assertCount(3, $page->blocks);
     }
-
 }

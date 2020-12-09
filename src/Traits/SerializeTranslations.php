@@ -1,11 +1,11 @@
-<?php 
+<?php
 
 namespace LambdaDigamma\MMPages\Traits;
 
 use Spatie\Translatable\HasTranslations;
 
-trait SerializeTranslations {
-
+trait SerializeTranslations
+{
     use HasTranslations;
 
     public function toArray()
@@ -18,5 +18,4 @@ trait SerializeTranslations {
 
         return $attributes;
     }
-
 }

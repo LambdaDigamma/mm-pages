@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace LambdaDigamma\MMPages\Models;
 
@@ -16,7 +16,7 @@ class PageBlock extends Model
     protected $table = "mm_page_blocks";
     protected $guarded = ['*', 'id'];
     protected $casts = [
-        'data' => 'array'
+        'data' => 'array',
     ];
 
     public $translatable = ['data'];
@@ -25,5 +25,4 @@ class PageBlock extends Model
     {
         return $this->belongsTo(Page::class, 'page_id', 'id');
     }
-
 }

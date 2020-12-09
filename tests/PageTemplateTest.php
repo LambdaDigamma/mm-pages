@@ -22,5 +22,4 @@ class PageTemplateTest extends TestCase
         $pageTemplate->load('pages');
         $this->assertCount(3, $pageTemplate->pages);
     }
-
 }

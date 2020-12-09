@@ -22,5 +22,4 @@ class PageBlockTest extends TestCase
         $block->load('page');
         $this->assertEquals($block->page->id, $page->id);
     }
-
 }

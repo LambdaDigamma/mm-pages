@@ -3,12 +3,11 @@
 namespace LambdaDigamma\MMPages\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LambdaDigamma\MMPages\Models\Page;
 use LambdaDigamma\MMPages\Traits\HasPackageFactory;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
 
-class PageTemplate extends Model {
-
+class PageTemplate extends Model
+{
     use HasPackageFactory;
     use SerializeTranslations;
 
@@ -16,9 +15,8 @@ class PageTemplate extends Model {
     protected $guarded = ['*', 'id'];
     public $translatable = ['name'];
 
-    public function pages() 
+    public function pages()
     {
         return $this->hasMany(Page::class, 'page_template_id', 'id');
     }
-
 }

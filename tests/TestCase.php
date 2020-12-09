@@ -3,8 +3,8 @@
 namespace LambdaDigamma\MMPages\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Orchestra\Testbench\TestCase as Orchestra;
 use LambdaDigamma\MMPages\MMPagesServiceProvider;
+use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
 {
@@ -41,5 +41,4 @@ class TestCase extends Orchestra
         include_once __DIR__.'/../database/migrations/create_mm_pages_table.php.stub';
         (new \CreateMMPagesTable())->up();
     }
-
 }
