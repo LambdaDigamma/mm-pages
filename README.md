@@ -1,3 +1,5 @@
+![mm-pages](https://banners.beyondco.de/mm-pages.png?theme=dark&packageManager=composer+require&packageName=lambdadigamma%2Fmm-pages&pattern=architect&style=style_1&description=A+package+providing+pages+for+the+Mein+Moers+platform.&md=1&showWatermark=0&fontSize=100px&images=template)
+
 # A package providing pages for the Mein Moers platform.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/lambdadigamma/mm-pages.svg?style=flat-square)](https://packagist.org/packages/lambdadigamma/mm-pages)
