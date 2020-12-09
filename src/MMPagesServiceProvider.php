@@ -35,6 +35,8 @@ class MMPagesServiceProvider extends ServiceProvider
 
     public function register()
     {
+        $this->app->register('LaravelArchivable\LaravelArchivableServiceProvider');
+
         $this->mergeConfigFrom(__DIR__ . '/../config/mm-pages.php', 'mm-pages');
     }
 

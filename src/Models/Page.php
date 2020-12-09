@@ -7,12 +7,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use LambdaDigamma\MMPages\Models\PageTemplate;
 use LambdaDigamma\MMPages\Traits\HasPackageFactory;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
+use LaravelArchivable\Archivable;
 
 class Page extends Model
 {
     use SoftDeletes;
     use HasPackageFactory;
     use SerializeTranslations;
+    use Archivable;
 
     protected $table = "mm_pages";
     protected $guarded = ['*', 'id'];

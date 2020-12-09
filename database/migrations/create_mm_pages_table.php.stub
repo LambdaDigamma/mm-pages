@@ -28,6 +28,7 @@ class CreateMMPagesTable extends Migration
                 ->onDelete('set null');
             $table->json('extras')->nullable();
             $table->timestamps();
+            $table->archivedAt();
             $table->softDeletes();
         });
 
