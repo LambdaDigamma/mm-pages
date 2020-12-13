@@ -2,14 +2,15 @@
 
 namespace LambdaDigamma\MMPages\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use LambdaDigamma\MMPages\Traits\HasPackageFactory;
+use LambdaDigamma\MMPages\Database\Factories\PageBlockFactory;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
 
 class PageBlock extends Model
 {
-    use HasPackageFactory;
+    use HasFactory;
     use SoftDeletes;
     use SerializeTranslations;
 
@@ -24,5 +25,10 @@ class PageBlock extends Model
     public function page()
     {
         return $this->belongsTo(Page::class, 'page_id', 'id');
+    }
+
+    public function newFactory()
+    {
+        return PageBlockFactory::new();
     }
 }

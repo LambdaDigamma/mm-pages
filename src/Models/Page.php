@@ -2,16 +2,17 @@
 
 namespace LambdaDigamma\MMPages\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use LambdaDigamma\MMPages\Traits\HasPackageFactory;
+use LambdaDigamma\MMPages\Database\Factories\PageFactory;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
 use LaravelArchivable\Archivable;
 
 class Page extends Model
 {
     use SoftDeletes;
-    use HasPackageFactory;
+    use HasFactory;
     use SerializeTranslations;
     use Archivable;
 
@@ -29,6 +30,11 @@ class Page extends Model
     public function pageTemplate()
     {
         return $this->belongsTo(PageTemplate::class, 'page_template_id', 'id');
+    }
+
+    public function newFactory()
+    {
+        return PageFactory::new();
     }
 
     public function scopeFilter($query, array $filters)
