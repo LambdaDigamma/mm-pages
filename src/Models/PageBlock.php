@@ -27,7 +27,7 @@ class PageBlock extends Model
         return $this->belongsTo(Page::class, 'page_id', 'id');
     }
 
-    public function newFactory()
+    public static function newFactory()
     {
         return PageBlockFactory::new();
     }

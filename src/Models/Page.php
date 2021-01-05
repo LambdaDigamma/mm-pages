@@ -32,7 +32,7 @@ class Page extends Model
         return $this->belongsTo(PageTemplate::class, 'page_template_id', 'id');
     }
 
-    public function newFactory()
+    public static function newFactory()
     {
         return PageFactory::new();
     }

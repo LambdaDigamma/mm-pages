@@ -21,7 +21,7 @@ class PageTemplate extends Model
         return $this->hasMany(Page::class, 'page_template_id', 'id');
     }
 
-    public function newFactory()
+    public static function newFactory()
     {
         return PageTemplateFactory::new();
     }
