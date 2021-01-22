@@ -4,7 +4,6 @@ namespace LambdaDigamma\MMPages\Traits;
 
 use Exception;
 use LambdaDigamma\MMPages\Scopes\HideableScope;
-use LaravelArchivable\Scopes\ArchivableScope;
 
 /**
  * @method static static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder withArchived()

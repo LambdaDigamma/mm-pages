@@ -54,7 +54,6 @@ class MMPagesServiceProvider extends ServiceProvider
         });
     }
 
-
     public static function migrationFileExists(string $migrationFileName): bool
     {
         $len = strlen($migrationFileName);
