@@ -3,6 +3,8 @@
 namespace LambdaDigamma\MMPages\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 use LambdaDigamma\MMPages\MMPagesServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -40,5 +42,16 @@ class TestCase extends Orchestra
     {
         include_once __DIR__.'/../database/migrations/create_mm_pages_table.php.stub';
         (new \CreateMMPagesTable())->up();
+
+        Schema::create('hideable_models', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->timestamp('hidden_at', 0)->nullable();
+        });
+
+        Schema::create('regular_models', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+        });
     }
 }

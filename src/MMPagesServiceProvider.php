@@ -2,6 +2,7 @@
 
 namespace LambdaDigamma\MMPages;
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
 use LambdaDigamma\MMPages\Commands\MMPagesCommand;
 
@@ -30,6 +31,7 @@ class MMPagesServiceProvider extends ServiceProvider
             ]);
         }
 
+        $this->configureMacros();
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'mm-pages');
     }
 
@@ -39,6 +41,19 @@ class MMPagesServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom(__DIR__ . '/../config/mm-pages.php', 'mm-pages');
     }
+
+    /**
+     * Configure the macros to be used.
+     *
+     * @return void
+     */
+    protected function configureMacros()
+    {
+        Blueprint::macro('hiddenAt', function ($column = 'hidden_at', $precision = 0) {
+            return $this->timestamp($column, $precision)->nullable();
+        });
+    }
+
 
     public static function migrationFileExists(string $migrationFileName): bool
     {

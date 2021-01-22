@@ -18,6 +18,8 @@ class CreateMMPagesTable extends Migration
             $table->bigIncrements('id');
             $table->json('title')->nullable();
             $table->json('slug')->nullable();
+            $table->json('summary')->nullable();
+            $table->json('keywords')->nullable();
             $table->bigInteger('page_template_id')->unsigned()->nullable();
             $table->foreign('page_template_id')->references('id')->on('mm_page_templates')
                 ->onUpdate('cascade')
@@ -41,8 +43,9 @@ class CreateMMPagesTable extends Migration
             $table->string('type');
             $table->json('data')->nullable();
             $table->unsignedInteger('order')->nullable();
-            $table->softDeletes();            
             $table->timestamps();
+            $table->hiddenAt();
+            $table->softDeletes();
         });
 
     }

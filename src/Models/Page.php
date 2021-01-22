@@ -18,7 +18,7 @@ class Page extends Model
 
     protected $table = "mm_pages";
     protected $guarded = ['*', 'id'];
-    public $translatable = ['title', 'slug'];
+    public $translatable = ['title', 'slug', 'summary', 'keywords'];
 
     public function blocks()
     {
