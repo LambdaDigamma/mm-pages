@@ -23,7 +23,7 @@ class Page extends Model
     public function blocks()
     {
         return $this
-            ->hasMany(PageBlock::class, 'page_id', 'id')
+            ->hasMany(PageBlock::class)
             ->orderBy('order');
     }
 

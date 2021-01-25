@@ -3,8 +3,13 @@
 namespace LambdaDigamma\MMPages;
 
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use LambdaDigamma\MMFeeds\Models\Feed;
+use LambdaDigamma\MMFeeds\Models\Post;
 use LambdaDigamma\MMPages\Commands\MMPagesCommand;
+use LambdaDigamma\MMPages\Models\Page;
+use LambdaDigamma\MMPages\Models\PageBlock;
 
 class MMPagesServiceProvider extends ServiceProvider
 {
@@ -33,6 +38,7 @@ class MMPagesServiceProvider extends ServiceProvider
 
         $this->configureMacros();
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'mm-pages');
+        $this->registerRoutes();
     }
 
     public function register()
@@ -42,11 +48,6 @@ class MMPagesServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/mm-pages.php', 'mm-pages');
     }
 
-    /**
-     * Configure the macros to be used.
-     *
-     * @return void
-     */
     protected function configureMacros()
     {
         Blueprint::macro('hiddenAt', function ($column = 'hidden_at', $precision = 0) {
@@ -65,4 +66,53 @@ class MMPagesServiceProvider extends ServiceProvider
 
         return false;
     }
+
+    /**
+     * Register all admin and api routes.
+     *
+     */
+    protected function registerRoutes()
+    {
+        Route::bind('anypage', function ($id) {
+            return Page::query()
+                ->withTrashed()
+                ->withArchived()
+                ->findOrFail($id);
+        });
+
+        Route::bind('anyblock', function ($id) {
+            return PageBlock::query()
+                ->withHidden()
+                ->withTrashed()
+                ->findOrFail($id);
+        });
+
+        Route::group($this->apiRouteConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+        });
+
+        Route::group($this->adminRouteConfiguration(), function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/admin.php');
+        });
+    }
+
+    protected function apiRouteConfiguration()
+    {
+        return [
+            'prefix' => config('mm-pages.api_prefix', 'api'),
+            'middleware' => config('mm-pages.api_middleware', ['api']),
+            'as' => 'api.',
+        ];
+    }
+
+    protected function adminRouteConfiguration()
+    {
+        return [
+            'prefix' => config('mm-pages.admin_prefix', 'admin'),
+            'middleware' => config('mm-pages.admin_middleware', ['web', 'auth']),
+            'as' => 'admin.',
+        ];
+    }
+
+
 }

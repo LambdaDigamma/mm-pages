@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use LambdaDigamma\MMPages\MMPagesServiceProvider;
+use Mavinoo\Batch\BatchServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -25,6 +26,7 @@ class TestCase extends Orchestra
     {
         return [
             MMPagesServiceProvider::class,
+            BatchServiceProvider::class,
         ];
     }
 
@@ -40,6 +42,7 @@ class TestCase extends Orchestra
 
     private function setupDatabase()
     {
+        $this->loadLaravelMigrations();
         include_once __DIR__.'/../database/migrations/create_mm_pages_table.php.stub';
         (new \CreateMMPagesTable())->up();
 
