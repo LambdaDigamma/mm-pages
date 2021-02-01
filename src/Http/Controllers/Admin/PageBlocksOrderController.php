@@ -10,7 +10,6 @@ use Mavinoo\Batch\BatchFacade;
 
 class PageBlocksOrderController extends Controller
 {
-
     public function update(UpdateBlockOrderRequest $request, Page $page)
     {
         $blocks = collect($request->blocks)->sortBy('order')->all();
@@ -20,7 +19,5 @@ class PageBlocksOrderController extends Controller
         return redirect()->back()->with('success', 'Der Block wurde verschoben.');
 
 //        dd(PageBlock::all());
-
     }
-
 }

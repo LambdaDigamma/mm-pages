@@ -31,6 +31,4 @@ class PageBlocksController extends Controller
             ? new JsonResponse('', 200)
             : redirect()->back()->with('info', 'Der Block wurde hinzugefügt.');
     }
-
-
 }

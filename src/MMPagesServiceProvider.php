@@ -5,8 +5,6 @@ namespace LambdaDigamma\MMPages;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use LambdaDigamma\MMFeeds\Models\Feed;
-use LambdaDigamma\MMFeeds\Models\Post;
 use LambdaDigamma\MMPages\Commands\MMPagesCommand;
 use LambdaDigamma\MMPages\Models\Page;
 use LambdaDigamma\MMPages\Models\PageBlock;
@@ -113,6 +111,4 @@ class MMPagesServiceProvider extends ServiceProvider
             'as' => 'admin.',
         ];
     }
-
-
 }
