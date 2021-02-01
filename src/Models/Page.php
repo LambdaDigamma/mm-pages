@@ -27,6 +27,15 @@ class Page extends Model
             ->orderBy('order');
     }
 
+    public function setAttribute($key, $value)
+    {
+        if ($key === 'keywords') {
+            $this->setTranslation('keywords', app()->getLocale(), $value);
+        } else {
+            parent::setAttribute($key, $value);
+        }
+    }
+
     public function pageTemplate()
     {
         return $this->belongsTo(PageTemplate::class, 'page_template_id', 'id');
