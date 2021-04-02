@@ -35,7 +35,7 @@ class UpdateBlockOrderRequestTest extends TestCase
                 ],
             ]
             )
-            ->assertStatus(200);
+            ->assertStatus(302);
 
         $block1 = PageBlock::find(1);
         $block2 = PageBlock::find(2);

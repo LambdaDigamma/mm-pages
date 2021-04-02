@@ -16,12 +16,19 @@ class PageBlock extends Model
     use SerializeTranslations;
     use Hideable;
 
+    /**
+     * All of the relationships to be touched.
+     *
+     * @var array
+     */
+    // protected $touches = ['page'];
+
     protected $table = "mm_page_blocks";
     protected $guarded = ['*', 'id'];
     protected $casts = [
         'data' => 'array',
     ];
-
+    
     public $translatable = ['data'];
 
     public function page()
