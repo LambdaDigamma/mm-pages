@@ -22,4 +22,24 @@ class PageBlockTest extends TestCase
         $block->load('page');
         $this->assertEquals($block->page->id, $page->id);
     }
+
+    /** @test */
+    public function a_page_block_can_have_children_blocks()
+    {
+        $parentBlock = PageBlock::factory()->create();
+        $childBlock = PageBlock::factory()->create();
+        $parentBlock->children()->saveMany([$childBlock]);
+        
+        $this->assertEquals($parentBlock->fresh()->children->count(), 1);
+    }
+
+    /** @test */
+    public function a_page_block_can_have_a_parent()
+    {
+        $parentBlock = PageBlock::factory()->create();
+        $childBlock = PageBlock::factory()->create();
+        $childBlock->parent()->associate($parentBlock);
+        
+        $this->assertEquals($childBlock->parent_id, $parentBlock->id);
+    }
 }

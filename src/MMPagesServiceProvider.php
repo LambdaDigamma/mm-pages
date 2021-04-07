@@ -80,6 +80,7 @@ class MMPagesServiceProvider extends ServiceProvider
 
         Route::bind('anyblock', function ($id) {
             return PageBlock::query()
+                ->with('children')
                 ->withHidden()
                 ->withTrashed()
                 ->findOrFail($id);

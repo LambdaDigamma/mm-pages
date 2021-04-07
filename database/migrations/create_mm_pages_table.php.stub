@@ -42,6 +42,11 @@ class CreateMMPagesTable extends Migration
                 ->onDelete('set null');
             $table->string('type');
             $table->json('data')->nullable();
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreign('parent_id')->references('id')->on('mm_page_blocks')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+            $table->string('slot')->nullable();
             $table->unsignedInteger('order')->nullable();
             $table->timestamps();
             $table->hiddenAt();

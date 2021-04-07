@@ -28,12 +28,23 @@ class PageBlock extends Model
     protected $casts = [
         'data' => 'array',
     ];
+    protected $with = ['children'];
     
     public $translatable = ['data'];
 
     public function page()
     {
         return $this->belongsTo(Page::class, 'page_id', 'id');
+    }
+
+    public function children() 
+    {
+        return $this->hasMany(PageBlock::class, 'parent_id', 'id');
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(PageBlock::class, 'parent_id', 'id');
     }
 
     public static function newFactory()
