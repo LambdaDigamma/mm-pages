@@ -2,6 +2,10 @@
 
 return [
 
+    'page_model' => LambdaDigamma\MMPages\Models\Page::class,
+
+    'page_block_model' => LambdaDigamma\MMPages\Models\PageBlock::class,
+
     /**
      * The api endpoints are being registered
      * under this prefix.

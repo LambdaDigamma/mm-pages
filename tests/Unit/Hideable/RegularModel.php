@@ -1,6 +1,6 @@
 <?php
 
-namespace LambdaDigamma\MMPages\Tests\Hideable;
+namespace LambdaDigamma\MMPages\Tests\Unit\Hideable;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

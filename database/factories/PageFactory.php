@@ -13,8 +13,8 @@ class PageFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->sentence(3),
-            'summary' => $this->faker->sentence(10, true)
+            'title' => ['en' => $this->faker->sentence(3)],
+            'summary' => ['en' => $this->faker->sentence(10, true)]
         ];
     }
 

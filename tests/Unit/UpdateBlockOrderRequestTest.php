@@ -1,11 +1,12 @@
 <?php
 
-namespace LambdaDigamma\MMPages\Tests;
+namespace LambdaDigamma\MMPages\Tests\Unit;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use LambdaDigamma\MMPages\Models\Page;
 use LambdaDigamma\MMPages\Models\PageBlock;
+use LambdaDigamma\MMPages\Tests\TestCase;
 use Orchestra\Testbench\Factories\UserFactory;
 
 class UpdateBlockOrderRequestTest extends TestCase

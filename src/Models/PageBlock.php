@@ -39,7 +39,9 @@ class PageBlock extends Model
 
     public function children()
     {
-        return $this->hasMany(PageBlock::class, 'parent_id', 'id');
+        return $this
+            ->hasMany(PageBlock::class, 'parent_id', 'id')
+            ->orderBy('order');
     }
 
     public function parent()
