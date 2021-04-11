@@ -51,7 +51,7 @@ class PageController extends Controller
 
         return new PageResource(
             $pageModel::with([
-                'blocks'
+                'blocks',
             ])
             ->findOrFail($id)
         );

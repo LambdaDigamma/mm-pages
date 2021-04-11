@@ -2,9 +2,9 @@
 
 namespace LambdaDigamma\MMPages\Unit\Tests;
 
+use LambdaDigamma\MMPages\Tests\TestCase;
 use LambdaDigamma\MMPages\Tests\Unit\Hideable\HideableModel;
 use LambdaDigamma\MMPages\Tests\Unit\Hideable\RegularModel;
-use LambdaDigamma\MMPages\Tests\TestCase;
 
 class HideableTest extends TestCase
 {
