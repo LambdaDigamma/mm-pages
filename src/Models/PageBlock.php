@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use LambdaDigamma\MMPages\Database\Factories\PageBlockFactory;
 use LambdaDigamma\MMPages\Traits\Hideable;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
+use LaravelPublishable\Publishable;
 
 class PageBlock extends Model
 {
@@ -15,6 +16,7 @@ class PageBlock extends Model
     use SoftDeletes;
     use SerializeTranslations;
     use Hideable;
+    use Publishable;
 
     /**
      * All of the relationships to be touched.

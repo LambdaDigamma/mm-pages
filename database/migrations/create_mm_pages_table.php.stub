@@ -50,6 +50,7 @@ class CreateMMPagesTable extends Migration
             $table->string('slot')->nullable();
             $table->unsignedInteger('order')->nullable();
             $table->timestamps();
+            $table->publishedAt();
             $table->hiddenAt();
             $table->softDeletes();
         });

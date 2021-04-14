@@ -27,8 +27,8 @@ class PageBlockTest extends TestCase
     /** @test */
     public function a_page_block_can_have_children_blocks()
     {
-        $parentBlock = PageBlock::factory()->create();
-        $childBlock = PageBlock::factory()->create();
+        $parentBlock = PageBlock::factory()->published()->create();
+        $childBlock = PageBlock::factory()->published()->create();
         $parentBlock->children()->saveMany([$childBlock]);
         
         $this->assertEquals($parentBlock->fresh()->children->count(), 1);
@@ -42,5 +42,25 @@ class PageBlockTest extends TestCase
         $childBlock->parent()->associate($parentBlock);
         
         $this->assertEquals($childBlock->parent_id, $parentBlock->id);
+    }
+
+    /** @test */
+    public function a_page_block_can_be_published()
+    {
+        $block = PageBlock::factory()->create();
+        $this->assertNull($block->published_at);
+
+        $block->publish();
+        $this->assertNotNull($block->published_at);
+    }
+
+    /** @test */
+    public function a_published_page_block_can_be_unpublished()
+    {
+        $block = PageBlock::factory()->published()->create();
+        $this->assertNotNull($block->published_at);
+
+        $block->unpublish();
+        $this->assertNull($block->published_at);
     }
 }

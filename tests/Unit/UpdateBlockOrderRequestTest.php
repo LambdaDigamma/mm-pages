@@ -18,7 +18,7 @@ class UpdateBlockOrderRequestTest extends TestCase
     {
         $page = Page::factory()
             ->published()
-            ->has(PageBlock::factory()->count(2), 'blocks')
+            ->has(PageBlock::factory()->published()->count(2), 'blocks')
             ->create();
 
         $this

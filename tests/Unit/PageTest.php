@@ -33,8 +33,8 @@ class PageTest extends TestCase
 
     public function test_page_can_have_page_blocks()
     {
-        $pageBlocks = PageBlock::factory()->count(3)->create();
-        $page = Page::factory()->create();
+        $pageBlocks = PageBlock::factory()->published()->count(3)->create();
+        $page = Page::factory()->published()->create();
 
         $this->assertCount(0, $page->blocks);
         $page->blocks()->saveMany($pageBlocks);

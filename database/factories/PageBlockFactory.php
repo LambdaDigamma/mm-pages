@@ -16,4 +16,13 @@ class PageBlockFactory extends Factory
         ];
     }
 
+    public function published()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'published_at' => now(),
+            ];
+        });
+    }
+
 }
