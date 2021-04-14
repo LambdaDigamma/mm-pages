@@ -34,7 +34,7 @@ class PageBlock extends Model
     
     public $translatable = ['data'];
 
-    public function page()
+    public function page(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Page::class, 'page_id', 'id');
     }
@@ -46,12 +46,12 @@ class PageBlock extends Model
             ->orderBy('order');
     }
 
-    public function parent()
+    public function parent(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(PageBlock::class, 'parent_id', 'id');
     }
 
-    public static function newFactory()
+    public static function newFactory(): PageBlockFactory
     {
         return PageBlockFactory::new();
     }

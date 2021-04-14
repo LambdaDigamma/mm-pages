@@ -11,7 +11,7 @@ use LambdaDigamma\MMPages\Models\PageBlock;
 
 class MMPagesServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
@@ -46,7 +46,7 @@ class MMPagesServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/mm-pages.php', 'mm-pages');
     }
 
-    protected function configureMacros()
+    protected function configureMacros(): void
     {
         Blueprint::macro('hiddenAt', function ($column = 'hidden_at', $precision = 0) {
             return $this->timestamp($column, $precision)->nullable();
@@ -68,8 +68,9 @@ class MMPagesServiceProvider extends ServiceProvider
     /**
      * Register all admin and api routes.
      *
+     * @return void
      */
-    protected function registerRoutes()
+    protected function registerRoutes(): void
     {
         Route::bind('anypage', function ($id) {
             return Page::query()
@@ -97,7 +98,10 @@ class MMPagesServiceProvider extends ServiceProvider
         });
     }
 
-    protected function apiRouteConfiguration()
+    /**
+     * @return (\Illuminate\Config\Repository|mixed|string)[]
+     */
+    protected function apiRouteConfiguration(): array
     {
         return [
             'prefix' => config('mm-pages.api_prefix', 'api'),
@@ -106,7 +110,10 @@ class MMPagesServiceProvider extends ServiceProvider
         ];
     }
 
-    protected function adminRouteConfiguration()
+    /**
+     * @return (\Illuminate\Config\Repository|mixed|string)[]
+     */
+    protected function adminRouteConfiguration(): array
     {
         return [
             'prefix' => config('mm-pages.admin_prefix', 'admin'),

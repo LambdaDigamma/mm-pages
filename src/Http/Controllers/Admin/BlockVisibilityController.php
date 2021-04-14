@@ -16,15 +16,15 @@ class BlockVisibilityController extends Controller
      * @param \LambdaDigamma\MMPages\Http\Requests\ShowBlockRequest $request
      * @param \LambdaDigamma\MMPages\Models\PageBlock               $block
      *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     * @return string
      */
     public function showBlock(ShowBlockRequest $request, PageBlock $block)
     {
         $block->update(['hidden_at' => null]);
 
         return $request->wantsJson()
-            ? "Test" //;new JsonResponse('', 200)
-            : "Test1"; //redirect()->back()->with('success', 'Der Block wurde sichtbar gemacht.');
+            ? new JsonResponse('', 200)
+            : redirect()->back()->with('success', 'Der Block wurde sichtbar gemacht.');
     }
 
     /**

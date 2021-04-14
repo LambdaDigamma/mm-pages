@@ -14,9 +14,9 @@ class PageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
-    public function index()
+    public function index(): void
     {
         // return new EventCollection(Event::paginate());
     }
@@ -24,10 +24,11 @@ class PageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request  $request
+     *
+     * @return void
      */
-    public function store(Request $request)
+    public function store(Request $request): void
     {
         //
     }
@@ -35,18 +36,19 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int  $id
+     *
+     * @return PageResource
      */
-    public function show($id)
+    public function show($id): PageResource
     {
-        $defaultSize = config('json-api-paginate.default_size');
+        config('json-api-paginate.default_size');
         $sizeParameter = config('json-api-paginate.size_parameter');
         $paginationParameter = config('json-api-paginate.pagination_parameter');
 
-        $size = (int) request()->input($paginationParameter.'.'.$sizeParameter, 10);
+        (int) request()->input($paginationParameter.'.'.$sizeParameter, 10);
 
-        $pageModel = config('mm-pages.page_model');
+        $pageModel = config('mm-pages.page_model', Page::class);
         
         return new PageResource(
             $pageModel::with([
@@ -54,18 +56,17 @@ class PageController extends Controller
             ])
             ->findOrFail($id)
         );
-
-        // return new EventResource(Event::with('page', 'place')->findOrFail($id));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request  $request
+     * @param int  $id
+     *
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id): void
     {
         //
     }
@@ -73,10 +74,11 @@ class PageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int  $id
+     *
+     * @return void
      */
-    public function destroy($id)
+    public function destroy($id): void
     {
         //
     }

@@ -106,7 +106,7 @@ trait Hideable
         $this->syncOriginalAttributes(array_keys($columns));
     }
 
-    public function show()
+    public function show(): bool
     {
         // If the hiding event returns false, we will exit the operation.
         // Otherwise, we will clear the hidden_at timestamp and continue

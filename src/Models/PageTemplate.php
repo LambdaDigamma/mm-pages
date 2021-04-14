@@ -16,12 +16,12 @@ class PageTemplate extends Model
     protected $guarded = ['*', 'id'];
     public $translatable = ['name'];
 
-    public function pages()
+    public function pages(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Page::class, 'page_template_id', 'id');
     }
 
-    public static function newFactory()
+    public static function newFactory(): PageTemplateFactory
     {
         return PageTemplateFactory::new();
     }

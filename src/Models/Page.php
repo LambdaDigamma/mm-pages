@@ -29,6 +29,9 @@ class Page extends Model
             ->orderBy('order');
     }
 
+    /**
+     * @return void
+     */
     public function setAttribute($key, $value)
     {
         if ($key === 'keywords') {
@@ -38,17 +41,17 @@ class Page extends Model
         }
     }
 
-    public function pageTemplate()
+    public function pageTemplate(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(PageTemplate::class, 'page_template_id', 'id');
     }
 
-    public static function newFactory()
+    public static function newFactory(): PageFactory
     {
         return PageFactory::new();
     }
 
-    public function scopeFilter($query, array $filters)
+    public function scopeFilter($query, array $filters): void
     {
         $query->when($filters['search'] ?? null, function ($query, $search) {
             $query->where('title', 'like', '%'.$search.'%');
