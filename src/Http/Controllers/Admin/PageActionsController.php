@@ -11,7 +11,6 @@ use LambdaDigamma\MMPages\Models\Page;
 
 class PageActionsController extends Controller
 {
-
     public function archive(Request $request, Page $page)
     {
         $page->archive();
@@ -48,5 +47,4 @@ class PageActionsController extends Controller
                 ? new JsonResponse('', 200)
                 : redirect()->back()->with('info', 'Die Seite wurde ins Entwurfsstadium zurückversetzt.');
     }
-
 }

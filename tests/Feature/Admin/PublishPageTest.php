@@ -43,5 +43,3 @@ test('archived not published page can be unarchived', function () {
     postJson("/admin/pages/{$page->id}/unarchive")->assertStatus(200);
     expect(Page::query()->withNotPublished()->withArchived()->find($page->id)->archived_at)->toBeNull();
 });
-
-
