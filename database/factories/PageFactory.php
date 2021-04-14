@@ -27,4 +27,31 @@ class PageFactory extends Factory
         });
     }
 
+    public function notPublished()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'published_at' => null,
+            ];
+        });
+    }
+
+    public function archived()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'archived_at' => now(),
+            ];
+        });
+    }
+
+    public function notArchived()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'archived_at' => null,
+            ];
+        });
+    }
+
 }

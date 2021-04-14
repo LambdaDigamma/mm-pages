@@ -73,6 +73,7 @@ class MMPagesServiceProvider extends ServiceProvider
     {
         Route::bind('anypage', function ($id) {
             return Page::query()
+                ->withNotPublished()
                 ->withTrashed()
                 ->withArchived()
                 ->findOrFail($id);
@@ -81,6 +82,7 @@ class MMPagesServiceProvider extends ServiceProvider
         Route::bind('anyblock', function ($id) {
             return PageBlock::query()
                 ->with('children')
+                ->withNotPublished()
                 ->withHidden()
                 ->withTrashed()
                 ->findOrFail($id);
