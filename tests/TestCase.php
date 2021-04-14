@@ -29,10 +29,10 @@ class TestCase extends Orchestra
     {
         return [
             MMPagesServiceProvider::class,
-            BatchServiceProvider::class,
             JsonApiPaginateServiceProvider::class,
             RayServiceProvider::class,
             LaravelPublishableServiceProvider::class,
+            BatchServiceProvider::class,
         ];
     }
 
