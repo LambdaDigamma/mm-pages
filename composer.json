@@ -18,7 +18,7 @@
     "require": {
         "php": "^7.4 || ^8.0",
         "ext-json": "*",
-        "illuminate/contracts": "^8.0",
+        "illuminate/contracts": "^8.30",
         "joelbutcher/laravel-archivable": "^1.1",
         "lambdadigamma/laravel-publishable": "^0.0.1",
         "laravel-json-api/laravel": "1.x-dev",
