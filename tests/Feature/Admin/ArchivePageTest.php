@@ -1,40 +1,45 @@
 <?php
 
-use Illuminate\Support\Carbon;
 use LambdaDigamma\MMPages\Models\Page;
 use Orchestra\Testbench\Factories\UserFactory;
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\postJson;
 
-test('unpublished page can be published now', function () {
-    actingAs(UserFactory::new()->create());
-    $page = Page::factory()->create();
-    expect($page->published_at)->toBeNull();
-
-    postJson("/admin/pages/{$page->id}/publish")->assertStatus(200);
-    expect(Page::find($page->id)->published_at)->not->toBeNull();
-});
-
-test('unpublished page can be published at specific time', function () {
-    actingAs(UserFactory::new()->create());
-    $page = Page::factory()->create();
-    expect($page->published_at)->toBeNull();
-
-    $publishAt = Carbon::now()->addMinutes(60);
-
-    postJson("/admin/pages/{$page->id}/publish", [
-        'published_at' => $publishAt->toDateTimeString(),
-    ])->assertStatus(200);
-    expect(Page::query()->withNotPublished()->find($page->id)->published_at->toDateTimeString())
-        ->toBe($publishAt->toDateTimeString());
-});
-
-test('published page can be unpublished', function () {
+test('page can be archived', function () {
     actingAs(UserFactory::new()->create());
     $page = Page::factory()->published()->create();
-    expect($page->published_at)->not->toBeNull();
+    expect($page->archived_at)->toBeNull();
 
-    postJson("/admin/pages/{$page->id}/unpublish")->assertStatus(200);
-    expect(Page::query()->withNotPublished()->find($page->id)->published_at)
-        ->toBeNull();
+    postJson("/admin/pages/{$page->id}/archive")->assertStatus(200);
+    expect(Page::query()->withNotPublished()->withArchived()->find($page->id)->archived_at)
+        ->not->toBeNull();
+});
+
+test('not published page can be archived', function () {
+    actingAs(UserFactory::new()->create());
+    $page = Page::factory()->create();
+    expect($page->archived_at)->toBeNull();
+
+    postJson("/admin/pages/{$page->id}/archive")->assertStatus(200);
+    expect(Page::query()->withNotPublished()->withArchived()->find($page->id)->archived_at)
+        ->not->toBeNull();
+});
+
+test('archived page can be unarchived', function () {
+    actingAs(UserFactory::new()->create());
+    $page = Page::factory()->published()->archived()->create();
+    expect($page->archived_at)->not->toBeNull();
+
+    postJson("/admin/pages/{$page->id}/unarchive")->assertStatus(200);
+    expect(Page::query()->withNotPublished()->withArchived()->find($page->id)->archived_at)->toBeNull();
+});
+
+test('archived not published page can be unarchived', function () {
+    actingAs(UserFactory::new()->create());
+    $page = Page::factory()->archived()->create();
+    // dd($page);
+    expect($page->archived_at)->not->toBeNull();
+
+    postJson("/admin/pages/{$page->id}/unarchive")->assertStatus(200);
+    expect(Page::query()->withNotPublished()->withArchived()->find($page->id)->archived_at)->toBeNull();
 });
