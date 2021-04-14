@@ -53,9 +53,11 @@ class Page extends Model
 
     public function scopeFilter($query, array $filters): void
     {
-        $query->when($filters['search'] ?? null, function ($query, $search) {
-            $query->where('title', 'like', '%'.$search.'%');
-            $query->where('slug', 'like', '%'.$search.'%');
+        $locale = app()->getLocale();
+        $query->when($filters['search'] ?? null, function ($query, $search) use ($locale) {
+            $query
+                ->where("title->${locale}", 'like', '%'.$search.'%')
+                ->orWhere("slug->${locale}", 'like', '%'.$search.'%');
         })->when($filters['trashed'] ?? null, function ($query, $trashed) {
             if ($trashed === 'with') {
                 $query->withTrashed();
