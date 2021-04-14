@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use LambdaDigamma\MMPages\MMPagesServiceProvider;
+use LaravelPublishable\LaravelPublishableServiceProvider;
 use Mavinoo\Batch\BatchServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\JsonApiPaginate\JsonApiPaginateServiceProvider;
@@ -31,6 +32,7 @@ class TestCase extends Orchestra
             BatchServiceProvider::class,
             JsonApiPaginateServiceProvider::class,
             RayServiceProvider::class,
+            LaravelPublishableServiceProvider::class,
         ];
     }
 

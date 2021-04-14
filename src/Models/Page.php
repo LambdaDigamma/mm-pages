@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use LambdaDigamma\MMPages\Database\Factories\PageFactory;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
 use LaravelArchivable\Archivable;
+use LaravelPublishable\Publishable;
 
 class Page extends Model
 {
@@ -15,6 +16,7 @@ class Page extends Model
     use HasFactory;
     use SerializeTranslations;
     use Archivable;
+    use Publishable;
 
     protected $table = "mm_pages";
     protected $guarded = ['*', 'id'];

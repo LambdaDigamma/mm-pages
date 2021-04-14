@@ -15,7 +15,7 @@ class PageTemplateTest extends TestCase
 
     public function test_page_template_can_have_pages()
     {
-        $pages = Page::factory()->count(3)->create();
+        $pages = Page::factory()->published()->count(3)->create();
         $pageTemplate = PageTemplate::factory()->create();
 
         $this->assertCount(0, $pageTemplate->pages);

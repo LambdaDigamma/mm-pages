@@ -5,7 +5,7 @@ use LambdaDigamma\MMPages\Models\Page;
 use function Pest\Laravel\get;
 
 test('show feed (/api/v1/pages/id)', function () {
-    $page1 = Page::factory()->create();
+    $page1 = Page::factory()->published()->create();
 
     get("/api/v1/pages/{$page1->id}")
         ->assertStatus(200)

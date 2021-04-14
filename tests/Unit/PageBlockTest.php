@@ -15,7 +15,7 @@ class PageBlockTest extends TestCase
 
     public function test_page_block_can_have_page()
     {
-        $page = Page::factory()->create();
+        $page = Page::factory()->published()->create();
         $block = PageBlock::factory()->create();
 
         $this->assertNull($block->page);

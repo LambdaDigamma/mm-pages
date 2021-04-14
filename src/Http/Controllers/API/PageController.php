@@ -47,8 +47,7 @@ class PageController extends Controller
         $size = (int) request()->input($paginationParameter.'.'.$sizeParameter, 10);
 
         $pageModel = config('mm-pages.page_model');
-        // $mediaInstance = new $mediaClass();
-
+        
         return new PageResource(
             $pageModel::with([
                 'blocks',
