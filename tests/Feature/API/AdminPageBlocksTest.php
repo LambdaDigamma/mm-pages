@@ -19,7 +19,7 @@ test('show page blocks (/api/v1/pages/blocks)', function () {
         ->assertJsonCount(3, "data")
         ->assertJsonStructure([
             'data' => [
-                ['id', 'type', 'data']
-            ]
+                ['id', 'type', 'data'],
+            ],
         ]);
 });

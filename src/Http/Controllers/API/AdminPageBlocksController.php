@@ -18,7 +18,7 @@ class AdminPageBlocksController extends Controller
             ->get();
 
         return [
-            'data' => $blocks
+            'data' => $blocks,
         ];
     }
 }
