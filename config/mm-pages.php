@@ -30,4 +30,6 @@ return [
      */
     'admin_middleware' => ['web', 'auth'],
 
+    'admin_middleware_stateless' => ['api', 'auth'],
+
 ];

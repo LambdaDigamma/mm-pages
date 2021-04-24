@@ -54,10 +54,13 @@ class Page extends Model
     public function scopeFilter($query, array $filters): void
     {
         $locale = app()->getLocale();
-        $query->when($filters['search'] ?? null, function ($query, $search) use ($locale) {
+        $fallback = config('app.fallback_locale', 'en');
+        $query->when($filters['search'] ?? null, function ($query, $search) use ($locale, $fallback) {
             $query
                 ->where("title->${locale}", 'like', '%'.$search.'%')
-                ->orWhere("slug->${locale}", 'like', '%'.$search.'%');
+                ->orWhere("title->${fallback}", 'like', '%'.$search.'%')
+                ->orWhere("slug->${locale}", 'like', '%'.$search.'%')
+                ->orWhere("slug->${fallback}", 'like', '%'.$search.'%');
         })->when($filters['trashed'] ?? null, function ($query, $trashed) {
             if ($trashed === 'with') {
                 $query->withTrashed();
