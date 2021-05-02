@@ -61,6 +61,14 @@ class Page extends Model
                 ->orWhere("title->${fallback}", 'like', '%'.$search.'%')
                 ->orWhere("slug->${locale}", 'like', '%'.$search.'%')
                 ->orWhere("slug->${fallback}", 'like', '%'.$search.'%');
+        })->when($filters['type'] ?? null, function ($query, $type) {
+            if ($type === 'drafts') {
+                $query->onlyNotPublished();
+            } elseif ($type === 'archived') {
+                $query->onlyArchived();
+            } elseif ($type === 'deleted') {
+                $query->onlyTrashed();
+            }
         })->when($filters['trashed'] ?? null, function ($query, $trashed) {
             if ($trashed === 'with') {
                 $query->withTrashed();
