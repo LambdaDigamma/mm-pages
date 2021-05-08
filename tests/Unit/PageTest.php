@@ -4,6 +4,7 @@ namespace LambdaDigamma\MMPages\Tests\Unit;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use LambdaDigamma\MMPages\Models\MenuItem;
 use LambdaDigamma\MMPages\Models\Page;
 use LambdaDigamma\MMPages\Models\PageBlock;
 use LambdaDigamma\MMPages\Models\PageTemplate;
@@ -40,5 +41,14 @@ class PageTest extends TestCase
         $page->blocks()->saveMany($pageBlocks);
         $page->load('blocks');
         $this->assertCount(3, $page->blocks);
+    }
+
+    public function test_page_can_have_menu_item()
+    {
+        $page = Page::factory()->published()->create();
+        $item = MenuItem::factory()->create();
+
+        $page->menuItem()->save($item);
+        $this->assertEquals($item->page_id, $page->id);
     }
 }

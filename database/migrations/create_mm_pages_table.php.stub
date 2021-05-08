@@ -35,6 +35,20 @@ class CreateMMPagesTable extends Migration
             $table->softDeletes();
         });
 
+        Schema::create('mm_menu_items', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->json('title')->nullable();
+            $table->unsignedBigInteger('page_id')->nullable();
+            $table->foreign('page_id')->references('id')->on('mm_pages')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreign('parent_id')->references('id')->on('mm_menu_items')
+                ->onUpdate('cascade')
+                ->onDelete('set null');
+            $table->timestamps();
+        });
+
         Schema::create('mm_page_blocks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('page_id')->nullable();
