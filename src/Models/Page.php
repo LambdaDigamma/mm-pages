@@ -9,6 +9,7 @@ use LambdaDigamma\MMPages\Database\Factories\PageFactory;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
 use LaravelArchivable\Archivable;
 use LaravelPublishable\Publishable;
+use Illuminate\Support\Str;
 
 class Page extends Model
 {
@@ -21,6 +22,7 @@ class Page extends Model
     protected $table = "mm_pages";
     protected $guarded = ['*', 'id'];
     public $translatable = ['title', 'slug', 'summary', 'keywords'];
+    public $appends = ["full_slug"];
 
     public function blocks()
     {
@@ -54,6 +56,17 @@ class Page extends Model
     public function parentMenuItem()
     {
         return $this->belongsTo(MenuItem::class, 'parent_menu_item_id', 'id');
+    }
+
+    public function getFullSlugAttribute()
+    {
+        $locale = app()->getLocale();
+
+        return Str::of('/')
+            ->append($locale)
+            ->append('/')
+            ->append($this->slug)
+            ->__toString();
     }
 
     public static function newFactory(): PageFactory

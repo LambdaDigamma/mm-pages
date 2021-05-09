@@ -16,7 +16,7 @@ class MenuItem extends Model
     public $table = "mm_menu_items";
     protected $guarded = ['*', 'id'];
     public $translatable = ['title', 'fragment'];
-    public $with = ["parent"];
+    public $with = ["parent", "page"];
 
     public function page()
     {
