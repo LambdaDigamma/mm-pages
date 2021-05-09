@@ -51,4 +51,13 @@ class PageTest extends TestCase
         $page->menuItem()->save($item);
         $this->assertEquals($item->page_id, $page->id);
     }
+
+    public function test_page_can_have_parent_menu_item()
+    {
+        $page = Page::factory()->published()->create();
+        $item = MenuItem::factory()->create();
+
+        $page->parentMenuItem()->associate($item);
+        $this->assertEquals($page->parent_menu_item_id, $item->id);
+    }
 }

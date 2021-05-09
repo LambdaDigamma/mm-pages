@@ -38,6 +38,7 @@ class CreateMMPagesTable extends Migration
         Schema::create('mm_menu_items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->json('title')->nullable();
+            $table->json('fragment')->nullable();
             $table->unsignedBigInteger('page_id')->nullable();
             $table->foreign('page_id')->references('id')->on('mm_pages')
                 ->onUpdate('cascade')
@@ -46,7 +47,17 @@ class CreateMMPagesTable extends Migration
             $table->foreign('parent_id')->references('id')->on('mm_menu_items')
                 ->onUpdate('cascade')
                 ->onDelete('set null');
+            $table->unsignedInteger('order')->nullable();
             $table->timestamps();
+        });
+
+        Schema::table('mm_pages', function (Blueprint $table) {
+            $table->after('keywords', function (Blueprint $table) {
+                $table->unsignedBigInteger('parent_menu_item_id')->nullable();
+                $table->foreign('parent_menu_item_id')->references('id')->on('mm_menu_items')
+                    ->onUpdate('cascade')
+                    ->onDelete('set null');
+            });
         });
 
         Schema::create('mm_page_blocks', function (Blueprint $table) {
@@ -81,5 +92,6 @@ class CreateMMPagesTable extends Migration
         Schema::dropIfExists('mm_page_blocks');
         Schema::dropIfExists('mm_page_templates');
         Schema::dropIfExists('mm_pages');
+        Schema::dropIfExists('mm_menu_items');
     }
 }

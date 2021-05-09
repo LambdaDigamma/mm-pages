@@ -51,6 +51,11 @@ class Page extends Model
         return $this->hasOne(MenuItem::class, 'page_id', 'id');
     }
 
+    public function parentMenuItem()
+    {
+        return $this->belongsTo(MenuItem::class, 'parent_menu_item_id', 'id');
+    }
+
     public static function newFactory(): PageFactory
     {
         return PageFactory::new();
