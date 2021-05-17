@@ -10,7 +10,11 @@ class AdminPageBlocksController extends Controller
     public function index($pageId)
     {
         $pageModel = config('mm-pages.page_model', Page::class);
-        $page = $pageModel::findOrFail($pageId);
+        $page = $pageModel::query()
+            ->withNotPublished()
+            ->withArchived()
+            ->withTrashed()
+            ->findOrFail($pageId);
 
         $blocks = $page->blocks()
             ->withNotPublished()
