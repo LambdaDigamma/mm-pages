@@ -7,8 +7,6 @@ use LambdaDigamma\MMPages\Http\Controllers\Controller;
 use LambdaDigamma\MMPages\Http\Resources\Page as PageResource;
 use LambdaDigamma\MMPages\Models\Page;
 
-// use LambdaDigamma\MMFeeds\Models\Feed;
-
 class PageController extends Controller
 {
     /**

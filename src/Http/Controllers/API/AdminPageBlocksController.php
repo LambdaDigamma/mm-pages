@@ -17,6 +17,7 @@ class AdminPageBlocksController extends Controller
             ->findOrFail($pageId);
 
         $blocks = $page->blocks()
+            ->withExpired()
             ->withNotPublished()
             ->withHidden()
             ->get();

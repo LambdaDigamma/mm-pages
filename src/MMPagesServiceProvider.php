@@ -84,6 +84,7 @@ class MMPagesServiceProvider extends ServiceProvider
             return PageBlock::query()
                 ->with('children')
                 ->withNotPublished()
+                ->withExpired()
                 ->withHidden()
                 ->withTrashed()
                 ->findOrFail($id);

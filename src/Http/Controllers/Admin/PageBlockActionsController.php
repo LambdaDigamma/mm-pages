@@ -19,7 +19,7 @@ class PageBlockActionsController extends Controller
         $pageBlock->scheduleFor($published_at ? Carbon::parse($published_at) : now());
 
         return $request->wantsJson()
-            ? new JsonResponse('', 200)
+            ? new JsonResponse($pageBlock, 200)
             : redirect()->back()->with('info', 'Der Veröffentlichungszeitpunkt wurde festgelegt.');
     }
 
@@ -28,7 +28,7 @@ class PageBlockActionsController extends Controller
         $pageBlock->unpublish();
 
         return $request->wantsJson()
-                ? new JsonResponse('', 200)
+                ? new JsonResponse($pageBlock, 200)
                 : redirect()->back()->with('info', 'Dieser Block wurde in den Entwurfsstadium zurückversetzt.');
     }
 
