@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use LambdaDigamma\MMPages\Http\Controllers\Admin\BlockVisibilityController;
+use LambdaDigamma\MMPages\Http\Controllers\Admin\EditorController;
 use LambdaDigamma\MMPages\Http\Controllers\Admin\PageActionsController;
 use LambdaDigamma\MMPages\Http\Controllers\Admin\PageBlockActionsController;
 use LambdaDigamma\MMPages\Http\Controllers\Admin\PageBlocksController;
@@ -28,3 +29,5 @@ Route::post('/pages/{anypage}/unpublish', [PageActionsController::class, 'unpubl
 
 Route::post('/pages/{anypage}/archive', [PageActionsController::class, 'archive'])->name('pages.archive');
 Route::post('/pages/{anypage}/unarchive', [PageActionsController::class, 'unarchive'])->name('pages.unarchive');
+
+Route::get('/editor/menu', [EditorController::class, 'menu'])->name('editor.menu.index');
