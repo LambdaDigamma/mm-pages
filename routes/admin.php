@@ -18,6 +18,9 @@ Route::post('/blocks/{anyblock}/hide', [BlockVisibilityController::class, 'hideB
 Route::post('/blocks/{anyblock}/publish', [PageBlockActionsController::class, 'publish'])->name('blocks.publish');
 Route::post('/blocks/{anyblock}/unpublish', [PageBlockActionsController::class, 'unpublish'])->name('blocks.unpublish');
 
+Route::post('/blocks/{anyblock}/expire', [PageBlockActionsController::class, 'expire'])->name('blocks.expire');
+Route::post('/blocks/{anyblock}/unexpire', [PageBlockActionsController::class, 'unexpire'])->name('blocks.unexpire');
+
 Route::delete('/blocks/{anyblock}', [PageBlocksController::class, 'delete'])->name('blocks.delete');
 Route::post('/blocks/{anyblock}/restore', [PageBlocksController::class, 'restore'])->name('blocks.restore');
 
