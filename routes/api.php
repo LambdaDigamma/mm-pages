@@ -22,4 +22,7 @@ Route::group([
     Route::get('pages/{pageId}/blocks', [AdminPageBlocksController::class, 'index'])
         ->name('admin.page.blocks.index');
 
+    Route::get('page-blocks/{pageBlockId}/children', [AdminPageBlocksController::class, 'children'])
+        ->name('admin.page-blocks.children');
+
 });
