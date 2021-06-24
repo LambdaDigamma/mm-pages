@@ -6,6 +6,7 @@ use LambdaDigamma\MMPages\Http\Controllers\Admin\EditorController;
 use LambdaDigamma\MMPages\Http\Controllers\Admin\PageActionsController;
 use LambdaDigamma\MMPages\Http\Controllers\Admin\PageBlockActionsController;
 use LambdaDigamma\MMPages\Http\Controllers\Admin\PageBlocksController;
+use LambdaDigamma\MMPages\Http\Controllers\Admin\PageBlockSlotOrderController;
 use LambdaDigamma\MMPages\Http\Controllers\Admin\PageBlocksOrderController;
 use LambdaDigamma\MMPages\Http\Controllers\Admin\PageController;
 
@@ -34,3 +35,6 @@ Route::post('/pages/{anypage}/archive', [PageActionsController::class, 'archive'
 Route::post('/pages/{anypage}/unarchive', [PageActionsController::class, 'unarchive'])->name('pages.unarchive');
 
 Route::get('/editor/menu', [EditorController::class, 'menu'])->name('editor.menu.index');
+
+// Slot
+Route::post('/page-blocks/{anypageblock}/children/order', [PageBlockSlotOrderController::class, 'update'])->name('page-blocks.children.order');
