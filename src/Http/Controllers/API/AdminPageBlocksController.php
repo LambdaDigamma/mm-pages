@@ -36,7 +36,14 @@ class AdminPageBlocksController extends Controller
             ->withExpired()
             ->withHidden()
             ->withTrashed()
-            ->with(['children'])
+            ->with(['children' => function ($query) {
+                $query
+                    ->withExpired()
+                    ->withNotPublished()
+                    ->withExpired()
+                    ->withHidden()
+                    ->withTrashed();
+            }])
             ->findOrFail($pageBlockId);
 
         return [
