@@ -20,7 +20,7 @@
         "ext-json": "*",
         "illuminate/contracts": "^8.34",
         "joelbutcher/laravel-archivable": "^1.1",
-        "lambdadigamma/laravel-publishable": "^0.0.3",
+        "lambdadigamma/laravel-publishable": "^1.0.0",
         "laravel-json-api/laravel": "1.x-dev",
         "mavinoo/laravel-batch": "^2.2",
         "spatie/laravel-json-api-paginate": "^1.10",
