@@ -18,7 +18,11 @@ trait SerializeTranslations
         $attributes = parent::toArray();
 
         foreach ($this->getTranslatableAttributes() as $name) {
-            $attributes[$name] = $this->getTranslation($name, app()->getLocale());
+            if ($attributes[$name]) {
+                $attributes[$name] = $this->getTranslation($name, app()->getLocale());
+            } else {
+                $attributes[$name] = new \stdClass();
+            }
         }
 
         return $attributes;
