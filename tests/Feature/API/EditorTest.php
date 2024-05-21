@@ -4,7 +4,6 @@ use LambdaDigamma\MMPages\Models\MenuItem;
 use Orchestra\Testbench\Factories\UserFactory;
 
 use function Pest\Laravel\actingAs;
-use function Pest\Laravel\get;
 use function Pest\Laravel\getJson;
 
 test('editor can retrieve all menu items', function () {
@@ -20,6 +19,6 @@ test('editor can retrieve all menu items', function () {
             'title',
             'page_id',
             'parent_id',
-            'order'
+            'order',
         ]]);
 });

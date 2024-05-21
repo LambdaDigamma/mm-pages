@@ -13,10 +13,13 @@ class MenuItem extends Model
     use HasFactory;
     use SerializeTranslations;
 
-    public $table = "mm_menu_items";
+    public $table = 'mm_menu_items';
+
     protected $guarded = ['*', 'id'];
+
     public $translatable = ['title', 'fragment'];
-    public $with = ["parent", "page"];
+
+    public $with = ['parent', 'page'];
 
     public function page()
     {

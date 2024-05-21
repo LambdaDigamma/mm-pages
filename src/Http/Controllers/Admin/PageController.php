@@ -10,7 +10,6 @@ use LambdaDigamma\MMPages\Models\Page;
 
 class PageController extends Controller
 {
-    
     public function delete(DeletePageRequest $request, Page $page)
     {
         if ($request->force) {
@@ -32,5 +31,4 @@ class PageController extends Controller
             ? new JsonResponse('', 200)
             : redirect()->back()->with('info', 'Die Seite wurde wiederhergestellt.');
     }
-
 }

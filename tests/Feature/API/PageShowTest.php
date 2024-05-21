@@ -2,7 +2,6 @@
 
 use LambdaDigamma\MMPages\Models\Page;
 
-use function Pest\Laravel\get;
 use function Pest\Laravel\getJson;
 
 test('show feed (/api/v1/pages/id)', function () {

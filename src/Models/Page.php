@@ -5,24 +5,27 @@ namespace LambdaDigamma\MMPages\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Str;
 use LambdaDigamma\MMPages\Database\Factories\PageFactory;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
 use LaravelArchivable\Archivable;
 use LaravelPublishable\Publishable;
-use Illuminate\Support\Str;
 
 class Page extends Model
 {
-    use SoftDeletes;
-    use HasFactory;
-    use SerializeTranslations;
     use Archivable;
+    use HasFactory;
     use Publishable;
+    use SerializeTranslations;
+    use SoftDeletes;
 
-    protected $table = "mm_pages";
+    protected $table = 'mm_pages';
+
     protected $guarded = ['*', 'id'];
+
     public $translatable = ['title', 'slug', 'summary', 'keywords'];
-    public $appends = ["full_slug"];
+
+    public $appends = ['full_slug'];
 
     public function blocks()
     {

@@ -12,8 +12,7 @@ class MenuItemFactory extends Factory
     public function definition()
     {
         return [
-            'title' => ['en' => $this->faker->sentence(3)]
+            'title' => ['en' => $this->faker->sentence(3)],
         ];
     }
-
 }

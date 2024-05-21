@@ -13,12 +13,12 @@ use LaravelPublishable\Publishable;
 
 class PageBlock extends Model
 {
+    use Expirable;
     use HasFactory;
-    use SoftDeletes;
-    use SerializeTranslations;
     use Hideable;
     use Publishable;
-    use Expirable;
+    use SerializeTranslations;
+    use SoftDeletes;
 
     /**
      * All of the relationships to be touched.
@@ -27,13 +27,16 @@ class PageBlock extends Model
      */
     // protected $touches = ['page'];
 
-    protected $table = "mm_page_blocks";
+    protected $table = 'mm_page_blocks';
+
     protected $guarded = ['*', 'id'];
+
     protected $casts = [
         'data' => 'array',
     ];
+
     protected $with = ['children'];
-    
+
     public $translatable = ['data'];
 
     public function page(): \Illuminate\Database\Eloquent\Relations\BelongsTo

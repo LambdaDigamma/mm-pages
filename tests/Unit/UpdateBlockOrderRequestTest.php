@@ -33,7 +33,7 @@ class UpdateBlockOrderRequestTest extends TestCase
                         'order' => 0,
                     ],
                 ],
-            ]
+                ]
             )
             ->assertStatus(302);
 

@@ -16,8 +16,6 @@ class PageBlocksController extends Controller
      * Creates a new block based on the given
      * type with the right data structure.
      *
-     * @param \LambdaDigamma\MMPages\Http\Requests\StoreBlockRequest $request
-     * @param \LambdaDigamma\MMPages\Models\Page                     $page
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */

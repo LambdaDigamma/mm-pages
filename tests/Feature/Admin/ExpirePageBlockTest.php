@@ -3,6 +3,7 @@
 use Illuminate\Support\Carbon;
 use LambdaDigamma\MMPages\Models\PageBlock;
 use Orchestra\Testbench\Factories\UserFactory;
+
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\postJson;
 
@@ -28,7 +29,7 @@ test('unpublished page block can be expired at specific time', function () {
         'expired_at' => $expireAt->toDateTimeString(),
     ])->assertStatus(200)->assertJsonStructure([
         'id',
-        'expired_at'
+        'expired_at',
     ]);
     expect(PageBlock::query()->withNotPublished()->find($block->id)->expired_at->toDateTimeString())
         ->toBe($expireAt->toDateTimeString());

@@ -2,7 +2,6 @@
 
 namespace LambdaDigamma\MMPages\Database\Factories;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use LambdaDigamma\MMPages\Models\Page;
 
@@ -14,7 +13,7 @@ class PageFactory extends Factory
     {
         return [
             'title' => ['en' => $this->faker->sentence(3)],
-            'summary' => ['en' => $this->faker->sentence(10, true)]
+            'summary' => ['en' => $this->faker->sentence(10, true)],
         ];
     }
 
@@ -53,5 +52,4 @@ class PageFactory extends Factory
             ];
         });
     }
-
 }

@@ -24,7 +24,7 @@ class UpdateBlockOrderRequest extends FormRequest
     public function rules()
     {
         return [
-//            'page_id' => 'required|integer|exists:LambdaDigamma\MMPages\Models\Page,id',
+            //            'page_id' => 'required|integer|exists:LambdaDigamma\MMPages\Models\Page,id',
             'blocks' => 'required|array',
             'blocks.*.id' => 'required|integer|exists:LambdaDigamma\MMPages\Models\PageBlock,id',
             'blocks.*.order' => 'required|integer|min:0',

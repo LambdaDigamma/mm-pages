@@ -15,17 +15,17 @@ class MMPagesServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../config/mm-pages.php' => config_path('mm-pages.php'),
+                __DIR__.'/../config/mm-pages.php' => config_path('mm-pages.php'),
             ], 'config');
 
             $this->publishes([
-                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/mm-pages'),
+                __DIR__.'/../resources/views' => base_path('resources/views/vendor/mm-pages'),
             ], 'views');
 
             $migrationFileName = 'create_mm_pages_table.php';
             if (! $this->migrationFileExists($migrationFileName)) {
                 $this->publishes([
-                    __DIR__ . "/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/' . date('Y_m_d_His', time()) . '_' . $migrationFileName),
+                    __DIR__."/../database/migrations/{$migrationFileName}.stub" => database_path('migrations/'.date('Y_m_d_His', time()).'_'.$migrationFileName),
                 ], 'migrations');
             }
 
@@ -35,7 +35,7 @@ class MMPagesServiceProvider extends ServiceProvider
         }
 
         $this->configureMacros();
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'mm-pages');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'mm-pages');
         $this->registerRoutes();
     }
 
@@ -43,7 +43,7 @@ class MMPagesServiceProvider extends ServiceProvider
     {
         $this->app->register('LaravelArchivable\LaravelArchivableServiceProvider');
 
-        $this->mergeConfigFrom(__DIR__ . '/../config/mm-pages.php', 'mm-pages');
+        $this->mergeConfigFrom(__DIR__.'/../config/mm-pages.php', 'mm-pages');
     }
 
     protected function configureMacros(): void
@@ -56,7 +56,7 @@ class MMPagesServiceProvider extends ServiceProvider
     public static function migrationFileExists(string $migrationFileName): bool
     {
         $len = strlen($migrationFileName);
-        foreach (glob(database_path("migrations/*.php")) as $filename) {
+        foreach (glob(database_path('migrations/*.php')) as $filename) {
             if ((substr($filename, -$len) === $migrationFileName)) {
                 return true;
             }
@@ -67,8 +67,6 @@ class MMPagesServiceProvider extends ServiceProvider
 
     /**
      * Register all admin and api routes.
-     *
-     * @return void
      */
     protected function registerRoutes(): void
     {
@@ -91,11 +89,11 @@ class MMPagesServiceProvider extends ServiceProvider
         });
 
         Route::group($this->apiRouteConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__ . '/../routes/api.php');
+            $this->loadRoutesFrom(__DIR__.'/../routes/api.php');
         });
 
         Route::group($this->adminRouteConfiguration(), function () {
-            $this->loadRoutesFrom(__DIR__ . '/../routes/admin.php');
+            $this->loadRoutesFrom(__DIR__.'/../routes/admin.php');
         });
     }
 

@@ -13,8 +13,6 @@ class BlockVisibilityController extends Controller
     /**
      * Resets the `hidden_at` attribute.
      *
-     * @param \LambdaDigamma\MMPages\Http\Requests\ShowBlockRequest $request
-     * @param \LambdaDigamma\MMPages\Models\PageBlock               $block
      *
      * @return string
      */
@@ -30,8 +28,6 @@ class BlockVisibilityController extends Controller
     /**
      * Sets the `hidden_at` attribute to the current timestamp.
      *
-     * @param \LambdaDigamma\MMPages\Http\Requests\HideBlockRequest $request
-     * @param \LambdaDigamma\MMPages\Models\PageBlock               $block
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */

@@ -12,7 +12,6 @@ use LambdaDigamma\MMPages\Models\PageBlock;
 
 class PageBlockActionsController extends Controller
 {
-    
     public function publish(PublishPageBlockRequest $request, PageBlock $pageBlock)
     {
         $published_at = request()->published_at;
@@ -41,7 +40,7 @@ class PageBlockActionsController extends Controller
             ? new JsonResponse($pageBlock, 200)
             : redirect()->back()->with('info', 'Das Ablaufdatum wurde festgelegt.');
     }
-    
+
     public function unexpire(Request $request, PageBlock $pageBlock)
     {
         $pageBlock->unexpire();
@@ -50,5 +49,4 @@ class PageBlockActionsController extends Controller
                 ? new JsonResponse($pageBlock, 200)
                 : redirect()->back()->with('info', 'Das Ablaufdatum wurde entfernt.');
     }
-
 }

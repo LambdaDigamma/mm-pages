@@ -2,9 +2,7 @@
 
 namespace LambdaDigamma\MMPages\Database\Factories;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use LambdaDigamma\MMPages\Models\Page;
 use LambdaDigamma\MMPages\Models\PageTemplate;
 
 class PageTemplateFactory extends Factory
@@ -17,5 +15,4 @@ class PageTemplateFactory extends Factory
             'name' => $this->faker->word(),
         ];
     }
-
 }

@@ -8,8 +8,8 @@ use LambdaDigamma\MMPages\Traits\Hideable;
 
 class HideableModel extends Model
 {
-    use Hideable;
     use HasFactory;
+    use Hideable;
 
     protected static function newFactory()
     {

@@ -18,8 +18,6 @@ class HideableScope implements Scope
     /**
      * Apply the scope to a given Eloquent query builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
-     * @param  \Illuminate\Database\Eloquent\Model  $model
      * @return void
      */
     public function apply(Builder $builder, Model $model)
@@ -32,7 +30,6 @@ class HideableScope implements Scope
     /**
      * Extend the query builder with the needed functions.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
     public function extend(Builder $builder)
@@ -45,7 +42,6 @@ class HideableScope implements Scope
     /**
      * Get the "archived at" column for the builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return string
      */
     protected function getHiddenAtColumn(Builder $builder)
@@ -60,7 +56,6 @@ class HideableScope implements Scope
     /**
      * Add the hide extension to the builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
     protected function addHide(Builder $builder)
@@ -77,7 +72,6 @@ class HideableScope implements Scope
     /**
      * Add the show extension to the builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
     protected function addShow(Builder $builder)
@@ -96,7 +90,6 @@ class HideableScope implements Scope
     /**
      * Add the with-hidden extension to the builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
     protected function addWithHidden(Builder $builder)
@@ -113,7 +106,6 @@ class HideableScope implements Scope
     /**
      * Add the without-hidden extension to the builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
     protected function addWithoutHidden(Builder $builder)
@@ -130,7 +122,6 @@ class HideableScope implements Scope
     /**
      * Add the only-hidden extension to the builder.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $builder
      * @return void
      */
     protected function addOnlyHidden(Builder $builder)

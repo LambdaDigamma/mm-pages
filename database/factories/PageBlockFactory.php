@@ -33,5 +33,4 @@ class PageBlockFactory extends Factory
             ];
         });
     }
-
 }

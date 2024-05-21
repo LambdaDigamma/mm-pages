@@ -11,8 +11,6 @@ class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return void
      */
     public function index(): void
     {
@@ -21,10 +19,6 @@ class PageController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request  $request
-     *
-     * @return void
      */
     public function store(Request $request): void
     {
@@ -34,9 +28,7 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int  $id
-     *
-     * @return PageResource
+     * @param  int  $id
      */
     public function show($id): PageResource
     {
@@ -47,22 +39,19 @@ class PageController extends Controller
         (int) request()->input($paginationParameter.'.'.$sizeParameter, 10);
 
         $pageModel = config('mm-pages.page_model', Page::class);
-        
+
         return new PageResource(
             $pageModel::with([
                 'blocks',
             ])
-            ->findOrFail($id)
+                ->findOrFail($id)
         );
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request  $request
-     * @param int  $id
-     *
-     * @return void
+     * @param  int  $id
      */
     public function update(Request $request, $id): void
     {
@@ -72,9 +61,7 @@ class PageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int  $id
-     *
-     * @return void
+     * @param  int  $id
      */
     public function destroy($id): void
     {

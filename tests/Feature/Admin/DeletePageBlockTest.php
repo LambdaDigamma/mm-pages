@@ -2,6 +2,7 @@
 
 use LambdaDigamma\MMPages\Models\PageBlock;
 use Orchestra\Testbench\Factories\UserFactory;
+
 use function Pest\Laravel\actingAs;
 use function Pest\Laravel\deleteJson;
 use function Pest\Laravel\postJson;

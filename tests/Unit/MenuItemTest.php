@@ -23,7 +23,7 @@ test('menu item can have parent', function () {
     $child = MenuItem::create(['title' => 'Child']);
 
     $child->parent()->associate($parent);
-    
+
     expect($child->parent_id)->toBe($parent->id);
 });
 

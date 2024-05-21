@@ -6,7 +6,7 @@ use LambdaDigamma\MMPages\Http\Controllers\API\PageController;
 
 Route::group([
     'prefix' => 'v1/',
-    'as' => 'v1.'
+    'as' => 'v1.',
 ], function () {
 
     Route::get('pages/{id}', [PageController::class, 'show'])
@@ -18,7 +18,7 @@ Route::group([
 Route::group([
     'prefix' => 'v1/admin/',
     'as' => 'v1.',
-    'middleware' => config('mm-pages.admin_middleware_stateless', ['api', 'api:auth'])
+    'middleware' => config('mm-pages.admin_middleware_stateless', ['api', 'api:auth']),
 ], function () {
 
     Route::get('pages/{pageId}/blocks', [AdminPageBlocksController::class, 'index'])

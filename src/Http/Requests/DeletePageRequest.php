@@ -2,7 +2,6 @@
 
 namespace LambdaDigamma\MMPages\Http\Requests;
 
-
 namespace LambdaDigamma\MMPages\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;

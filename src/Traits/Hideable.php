@@ -14,8 +14,6 @@ trait Hideable
 {
     /**
      * Indicates if the model should use archives.
-     *
-     * @var bool
      */
     public bool $hides = true;
 
