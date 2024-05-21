@@ -29,13 +29,13 @@
     },
     "require-dev": {
         "laravel/pint": "^1.14",
-        "orchestra/testbench": "^6.0",
-        "pestphp/pest": "^1.0 || ^2.0",
         "pestphp/pest-plugin-faker": "^1.0",
         "pestphp/pest-plugin-laravel": "^1.0",
         "phpunit/phpunit": "^9.3",
         "spatie/laravel-ray": "^1.17",
         "vimeo/psalm": "^3.11",
+        "orchestra/testbench": "^v9.1.0",
+        "pestphp/pest": "^v2.34.0",
         "spatie/test-time": "^1.2"
     },
     "autoload": {
