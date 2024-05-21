@@ -3,7 +3,6 @@
 namespace LambdaDigamma\MMPages\Tests\Unit;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use LambdaDigamma\MMPages\Models\Page;
 use LambdaDigamma\MMPages\Models\PageTemplate;
 use LambdaDigamma\MMPages\Tests\TestCase;
@@ -11,7 +10,6 @@ use LambdaDigamma\MMPages\Tests\TestCase;
 class PageTemplateTest extends TestCase
 {
     use DatabaseMigrations;
-    use RefreshDatabase;
 
     public function test_page_template_can_have_pages()
     {

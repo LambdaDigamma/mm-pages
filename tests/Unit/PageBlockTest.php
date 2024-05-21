@@ -3,7 +3,6 @@
 namespace LambdaDigamma\MMPages\Tests\Unit;
 
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Carbon;
 use LambdaDigamma\MMPages\Models\Page;
 use LambdaDigamma\MMPages\Models\PageBlock;
@@ -13,7 +12,6 @@ use Spatie\TestTime\TestTime;
 class PageBlockTest extends TestCase
 {
     use DatabaseMigrations;
-    use RefreshDatabase;
 
     public function test_page_block_can_have_page()
     {
@@ -32,7 +30,7 @@ class PageBlockTest extends TestCase
         $parentBlock = PageBlock::factory()->published()->create();
         $childBlock = PageBlock::factory()->published()->create();
         $parentBlock->children()->saveMany([$childBlock]);
-        
+
         $this->assertEquals($parentBlock->fresh()->children->count(), 1);
     }
 
@@ -42,7 +40,7 @@ class PageBlockTest extends TestCase
         $parentBlock = PageBlock::factory()->create();
         $childBlock = PageBlock::factory()->create();
         $childBlock->parent()->associate($parentBlock);
-        
+
         $this->assertEquals($childBlock->parent_id, $parentBlock->id);
     }
 
