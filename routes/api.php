@@ -9,7 +9,7 @@ Route::group([
     'as' => 'v1.',
 ], function () {
 
-    if (!config('mm-pages.api_disable_page_endpoint', false)) {
+    if (! config('mm-pages.api_disable_page_endpoint', false)) {
         Route::get('pages/{id}', [PageController::class, 'show'])
             ->middleware('cache.headers:public;max_age=3600;etag')
             ->name('pages.show');
