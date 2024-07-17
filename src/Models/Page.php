@@ -16,8 +16,8 @@ class Page extends Model
 {
     use Archivable;
     use HasFactory;
-    use Publishable;
     use HasTranslations;
+    use Publishable;
     use SerializeTranslations;
     use SoftDeletes;
 

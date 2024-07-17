@@ -2,6 +2,4 @@
 
 namespace LambdaDigamma\MMPages;
 
-class MMPages
-{
-}
+class MMPages {}

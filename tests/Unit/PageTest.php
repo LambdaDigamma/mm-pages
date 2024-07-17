@@ -59,7 +59,8 @@ class PageTest extends TestCase
         $this->assertEquals($page->parent_menu_item_id, $item->id);
     }
 
-    public function test_page_to_array() {
+    public function test_page_to_array()
+    {
 
         $page = Page::factory()->published()->create(['title' => ['en' => 'Test Page']]);
         $page->setTranslation('title', 'de', 'Test Seite');

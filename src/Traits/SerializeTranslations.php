@@ -18,6 +18,7 @@ trait SerializeTranslations
         foreach ($translatables as $field) {
             $attributes[$field] = $this->getTranslation($field, \App::getLocale());
         }
+
         return array_merge($attributes, $this->relationsToArray());
     }
 }

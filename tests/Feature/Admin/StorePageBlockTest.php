@@ -1,5 +1,3 @@
 <?php
 
-test('block gets initialized with empty object', function () {
-
-});
+test('block gets initialized with empty object', function () {});
