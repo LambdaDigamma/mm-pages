@@ -10,12 +10,14 @@ use LambdaDigamma\MMPages\Database\Factories\PageFactory;
 use LambdaDigamma\MMPages\Traits\SerializeTranslations;
 use LaravelArchivable\Archivable;
 use LaravelPublishable\Publishable;
+use Spatie\Translatable\HasTranslations;
 
 class Page extends Model
 {
     use Archivable;
     use HasFactory;
     use Publishable;
+    use HasTranslations;
     use SerializeTranslations;
     use SoftDeletes;
 

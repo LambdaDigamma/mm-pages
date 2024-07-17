@@ -58,4 +58,18 @@ class PageTest extends TestCase
         $page->parentMenuItem()->associate($item);
         $this->assertEquals($page->parent_menu_item_id, $item->id);
     }
+
+    public function test_page_to_array() {
+
+        $page = Page::factory()->published()->create(['title' => ['en' => 'Test Page']]);
+        $page->setTranslation('title', 'de', 'Test Seite');
+        $page->setTranslation('title', 'fr', 'Test Page');
+
+        $this->app->setLocale('en');
+        $this->assertEquals('Test Page', $page->toArray()['title']);
+
+        $this->app->setLocale('de');
+        $this->assertEquals('Test Seite', $page->toArray()['title']);
+
+    }
 }
