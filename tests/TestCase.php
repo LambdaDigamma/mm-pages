@@ -50,7 +50,7 @@ class TestCase extends Orchestra
     {
         $this->loadLaravelMigrations();
         include_once __DIR__.'/../database/migrations/create_mm_pages_table.php.stub';
-        (new \CreateMMPagesTable())->up();
+        (new \CreateMMPagesTable)->up();
 
         Schema::create('hideable_models', function (Blueprint $table) {
             $table->increments('id');

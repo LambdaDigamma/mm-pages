@@ -45,7 +45,7 @@ class HideableTest extends TestCase
     }
 
     /** @test */
-    public function all_models_can_be_found_with_the_withArchived_scope()
+    public function all_models_can_be_found_with_the_with_archived_scope()
     {
         HideableModel::factory()->hidden()->create();
         HideableModel::factory()->create();
@@ -54,7 +54,7 @@ class HideableTest extends TestCase
     }
 
     /** @test */
-    public function only_hidden_models_can_be_found_with_the_onlyHidden_scope()
+    public function only_hidden_models_can_be_found_with_the_only_hidden_scope()
     {
         HideableModel::factory()->hidden()->create();
         HideableModel::factory()->create();
