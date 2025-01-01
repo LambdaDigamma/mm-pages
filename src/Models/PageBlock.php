@@ -21,7 +21,7 @@ class PageBlock extends Model
     use SoftDeletes;
 
     /**
-     * All of the relationships to be touched.
+     * All the relationships to be touched.
      *
      * @var array
      */
