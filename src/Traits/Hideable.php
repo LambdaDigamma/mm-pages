@@ -22,7 +22,7 @@ trait Hideable
      *
      * @return void
      */
-    public static function bootHideable()
+    public static function bootHideable(): void
     {
         static::addGlobalScope(new HideableScope);
     }
@@ -32,7 +32,7 @@ trait Hideable
      *
      * @return void
      */
-    public function initializeHideable()
+    public function initializeHideable(): void
     {
         if (! isset($this->casts[$this->getHiddenAtColumn()])) {
             $this->casts[$this->getHiddenAtColumn()] = 'datetime';
@@ -40,13 +40,13 @@ trait Hideable
     }
 
     /**
-     * Archive the model.
+     * Hide the model.
      *
      * @return bool|null
      *
      * @throws Exception
      */
-    public function hide()
+    public function hide(): ?bool
     {
         $this->mergeAttributesFromClassCasts();
 
@@ -56,7 +56,7 @@ trait Hideable
 
         // If the model doesn't exist, there is nothing to hide.
         if (! $this->exists) {
-            return;
+            return true;
         }
 
         // If the hiding event doesn't return false, we'll continue
